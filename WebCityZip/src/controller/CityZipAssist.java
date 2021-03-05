@@ -52,7 +52,7 @@ public class CityZipAssist {
 	public List<CityZip> lookForZip(String Zip){
 		EntityManager em = emManager.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<CityZip> tQ = em.createNamedQuery("select CITY, ZIPCODE from towns where ZIPCODE =" + Zip, CityZip.class);
+		TypedQuery<CityZip> tQ = em.createQuery("select CZ from cities where CZ.zipCode = :selectedzipCode", CityZip.class);
 		tQ.setParameter("selectedzipCode", Zip);
 		List<CityZip> foundZip = tQ.getResultList();
 		em.close();
