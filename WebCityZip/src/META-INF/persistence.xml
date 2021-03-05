@@ -3,9 +3,11 @@
 	<persistence-unit name="CityZipCodeJPA" transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>model.CityZip</class>
+		<class>model.Address</class>
+		<class>model.ListDetails</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://instance1.c9aojvbvgaxc.us-east-1.rds.amazonaws.com/cities"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://instance1.c9aojvbvgaxc.us-east-1.rds.amazonaws.com/DBofCities"/>
 			<property name="javax.persistence.jdbc.user" value="admin"/>
 			<property name="javax.persistence.jdbc.password" value="mymasteruser"/>
 		</properties>
