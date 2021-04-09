@@ -36,8 +36,7 @@ public class CityZipAssist {
 	public void deleteZip(CityZip toDelete) {
 		EntityManager em = emManager.createEntityManager();
 		em.getTransaction().begin();		//select CZ from cities where CZ.zipCode = :selectedzipCode", CityZip.class
-		TypedQuery<CityZip> typedQuery = em.createQuery("select CZ from cities where CZ.zipCode = :selectedzipCode", CityZip.class);
-		
+		TypedQuery<CityZip> typedQuery = em.createQuery("select CZ from towns where CZ.zipCode = :selectedzipCode", CityZip.class);
 		typedQuery.setParameter("selectedzipCode", toDelete.getZipCode());
 		
 		typedQuery.setMaxResults(1);
@@ -52,13 +51,12 @@ public class CityZipAssist {
 	public List<CityZip> lookForZip(String Zip){
 		EntityManager em = emManager.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<CityZip> tQ = em.createNamedQuery("select CITY, ZIPCODE from towns where ZIPCODE =" + Zip, CityZip.class);
+		//TypedQuery<CityZip> tQ = em.createQuery("select CZ from towns where CZ.zipCode = :selectedzipCode", CityZip.class);
+		TypedQuery<CityZip> tQ = em.createQuery("select CZ from towns where CZ.zipCode = :selectedzipCode", CityZip.class);
 		tQ.setParameter("selectedzipCode", Zip);
 		List<CityZip> foundZip = tQ.getResultList();
 		em.close();
 		return foundZip;
-		
-		
 	}
 	
 	public void update(CityZip cityToUpdate) {

@@ -3,9 +3,23 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+
+<script type = "text/javascript">
+function validateForm() {
+	  var x = document.forms["myForm"]["city"].value;
+	  if (x == 1) {
+	    alert("Invalid input!");
+	    return false;
+	  }
+}
+	
+
+
+</script>
+
 </head>
 <body>
-	<form action = "addCityServlet" method= "post">
+	<form name="myForm" action = "addCityServlet" onsubmit="return validateForm()" method= "post">
 	City: <input type="text" name = "city">
 	Zip Code: <input type = "text" name = "zipCode">
 	<input type= "submit" value="Add City">
